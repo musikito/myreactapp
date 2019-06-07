@@ -1,19 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default function AllUsers(props) {
-  const getAllUsers = () => {
-    document.getElementById("username").innerHTML = props.userName;
-    // console.log({ props });
-  };
+export default class AllUsers extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div>
-      <h3>Get all users</h3>
-      <p id="username" />
-      <div>Username is {props.userName}.</div>
-      <button onClick={getAllUsers}>Get all users</button>
-    </div>
-  );
+    this.state = {
+      userName: "",
+      results: ""
+    };
+  }
+  render() {
+    return <div />;
+  }
 }
-
-//export default AllUsers;

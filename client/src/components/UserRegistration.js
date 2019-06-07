@@ -7,6 +7,9 @@ export default class UserRegistration extends Component {
   };
   registerUser = () => {
     console.log(this.state);
+    const newUser =
+      "Name: " + this.state.userName + "|" + "Msg: " + this.state.message;
+    this.props.setData(newUser);
   };
   render() {
     return (
