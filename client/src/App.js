@@ -8,7 +8,8 @@ import AllUsers from "./components/AllUsers";
 class App extends Component {
   state = {
     data: "",
-    allUsers: ""
+    allUsers: "",
+    pageView: ""
   };
 
   getAllUsers = () => {
@@ -27,10 +28,48 @@ class App extends Component {
       //inline styling
       <div style={{ margin: "10px", textAlign: "center" }} className="App">
         <h2>My Express App</h2>
+        <a
+          style={{ margin: "10px" }}
+          href="#"
+          onClick={() =>
+            this.setState({
+              pageView: <UserRegistration setData={this.updateDate} />
+            })
+          }
+        >
+          Register
+        </a>
+        <a
+          style={{ margin: "10px" }}
+          href="#"
+          onClick={() =>
+            this.setState({
+              pageView: <UserInfo data={this.state.data} />
+            })
+          }
+        >
+          User Info
+        </a>
+        <a
+          style={{ margin: "10px" }}
+          href="#"
+          onClick={() =>
+            this.setState({
+              pageView: (
+                <AllUsers
+                  setAllUsers={this.getAllUsers}
+                  data={this.state.data}
+                />
+              )
+            })
+          }
+        >
+          All Users
+        </a>
 
-        <UserInfo data={this.state.data} />
-        <AllUsers setAllUsers={this.getAllUsers} data={this.state.data} />
-        <UserRegistration setData={this.updateDate} />
+        <br />
+
+        {this.state.pageView}
       </div>
     );
   }
